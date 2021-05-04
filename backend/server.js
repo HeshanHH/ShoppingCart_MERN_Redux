@@ -1,5 +1,8 @@
 require('dotenv').config(); // import .env
 const express = require('express'); // import express
+const connectDB = require('./config/db');
+
+connectDB(); // call the mongodb fucntion exported from the modngo db config file db.js
 
 const app = express();
 

@@ -25,4 +25,4 @@ module.exports = connectDB;
 // 4 - config database access (create user add user existing user).
 // 5 - config network access (allow the access as you wish).
 // 6 - in cluster click connect and select connect your application, select driver with node vertion and get the connection uri (connectonString).
-// 7 - change password to your password and give a name to your collection(database). the collection name an be any meaningfull name.
+// 7 - change password to your password and give a name to your document(database). the collection name an be any meaningfull name.

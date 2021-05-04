@@ -17,7 +17,8 @@ const Navbar = () => {
           <Link to="/cart" className="cart__link">
             <i className="fas fa-shopping-cart"></i>
             <span>
-              Cart <span className="cartlogo__badge">{getCartCount()}</span>
+              {/* Cart <span className="cartlogo__badge">{getCartCount()}</span> */}
+              Cart <span className="cartlogo__badge">0</span>
             </span>
           </Link>
         </li>
@@ -27,6 +28,12 @@ const Navbar = () => {
       </ul>
 
       {/* hamberger menu */}
+
+      <div className="hamburger__menu">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </nav>
   );
 };

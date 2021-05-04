@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   getProducts,
   getProductById,
-} = require('../controller/productControllers'); // named impots
+} = require('../controllers/productControllers'); // named impots
 
 //@desc GET all product from the collection
 //@routs GET /api/products

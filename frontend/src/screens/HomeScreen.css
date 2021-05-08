@@ -9,4 +9,10 @@
     margin-bottom: 1rem;
     margin-left: 8px;
   }
+
+  .homescreen__products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   

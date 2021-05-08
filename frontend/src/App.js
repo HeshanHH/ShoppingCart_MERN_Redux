@@ -8,6 +8,7 @@ import CartScreen from './screens/CartScreen';
 
 // Components
 import Navbar from './components/Navbar';
+import Backdrop from './components/Backdrop';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Navbar></Navbar>
       {/* SideDrower */}
       {/* BackDrop */}
+      <Backdrop></Backdrop>
       <main>
         <Switch>
           <Route exact path="/" component={HomeScreen} />

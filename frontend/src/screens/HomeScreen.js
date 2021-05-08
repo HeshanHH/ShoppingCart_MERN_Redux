@@ -9,6 +9,12 @@ const HomeScreen = () => {
       <div className="homescreen__products">
         {/* Display prodcts */}
         <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
       </div>
     </div>
   );

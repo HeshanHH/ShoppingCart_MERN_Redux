@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Product.css';
+import { Link } from 'react-router-dom';
 
 const Product = () => {
   return (
@@ -14,14 +14,12 @@ const Product = () => {
       {/* produt info */}
       <div className="product__info">
         <p className="info__name">Product HC 01</p>
-
         <p className="info__description">
-          qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
-          qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+          Test product Test product Test product Test product Test product Test
+          productTest product Test product Test product Test product Test
+          product Test product Test product Test product Test product
         </p>
-
         <p className="info__price">$500.00</p>
-
         <Link to={`/product/${111}`} className="info__button">
           View
         </Link>

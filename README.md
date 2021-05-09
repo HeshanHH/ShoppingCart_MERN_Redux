@@ -19,3 +19,15 @@
 # CSS
 
 - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+# Redux
+
+- https://redux.js.org/introduction/getting-started
+
+# Redux devtool
+
+- https://github.com/reduxjs/redux-devtools
+
+# Redux thunk
+
+- https://github.com/reduxjs/redux-thunk

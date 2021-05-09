@@ -19,9 +19,20 @@ const reducer = combineReducers({
 // provide created middlewares to the applyMiddleware.
 const middleware = [thunk];
 
+const cartItemsInLocalStorage = localStorage.getItem('cart')
+  ? JSON.parse(localStorage.getItem('cart'))
+  : [];
+
+const INITIAL_STATE = {
+  cart: {
+    cartItems: cartItemsInLocalStorage,
+  },
+};
+
 // This will create the store for the redux..  this is the place we are use to store the application state.
 const store = createStore(
   reducer,
+  INITIAL_STATE,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 

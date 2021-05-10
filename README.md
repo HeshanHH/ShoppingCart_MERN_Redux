@@ -31,3 +31,39 @@
 # Redux thunk
 
 - https://github.com/reduxjs/redux-thunk
+
+# CORS
+
+- https://www.npmjs.com/package/cors
+
+# bcrypt
+
+- https://www.npmjs.com/package/bcrypt
+
+# joi
+
+- https://www.npmjs.com/package/joi
+
+# joi-objectid
+
+- https://www.npmjs.com/package/joi-objectid
+
+# jsonwebtoken
+
+- https://www.npmjs.com/package/jsonwebtoken
+
+# lodash
+
+- https://lodash.com/
+
+# moment
+
+- https://momentjs.com/
+
+# winston
+
+- https://www.npmjs.com/package/winston
+
+# winston-mongodb
+
+- https://www.npmjs.com/package/winston

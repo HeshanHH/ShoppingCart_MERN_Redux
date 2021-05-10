@@ -38,11 +38,13 @@ const ProductTable = () => {
                 <td className="table__td">
                   <span className="table__mobile-caption">Actions</span>
                   <span className="table__value">
-                    <button className="btn btn-danger">DELETE</button>
+                    <button className="btn btn-danger" style={{ margin: 5 }}>
+                      <i className="fas fa-trash"></i> DELETE
+                    </button>
                   </span>
                   <span className="table__value">
                     <button className="btn btn-success" style={{ margin: 5 }}>
-                      UPDATE
+                      <i className="fas fa-edit"></i> UPDATE
                     </button>
                   </span>
                 </td>

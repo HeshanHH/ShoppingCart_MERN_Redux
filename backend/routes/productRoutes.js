@@ -9,9 +9,16 @@ const {
   updateProduct,
 } = require('../controllers/productControllers'); // named impots
 
-//@desc GET all product from the collection
-//@routs GET /api/products
-//@access Public
+/**
+ * @swagger
+ * /api/products:
+ *  get:
+ *    description: Use to request all products
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
+
 router.get('/', getProducts);
 
 //@desc GET a product by id from the collection

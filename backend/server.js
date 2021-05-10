@@ -2,12 +2,36 @@ require('dotenv').config(); // import .env
 const express = require('express'); // import express
 const productRoutes = require('./routes/productRoutes');
 const connectDB = require('./config/db');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 connectDB(); // call the mongodb fucntion exported from the modngo db config file db.js
 
 const app = express();
 
 app.use(express.json());
+
+// Extended: https://swagger.io/specification/#infoObject
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      version: '1.0.0',
+      title: 'Shopping Cart API',
+      description: 'Shopping Cart API Information',
+      contact: {
+        name: 'Amazing Developer',
+      },
+      servers: ['http://localhost:5000'],
+    },
+  },
+  // ['.routes/*.js']
+  //apis: ['app.js'],
+  apis: ['./backend/routes/*.js'],
+};
+const swaggerDocs = swaggerJsDoc(swaggerOptions); // pass our swager configurations.
+
+//http://localhost:5000/api-docs/
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use('/api/products', productRoutes);
 

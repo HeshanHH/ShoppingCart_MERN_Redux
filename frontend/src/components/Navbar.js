@@ -33,6 +33,9 @@ const Navbar = ({ click }) => {
         <li>
           <Link to="/">Shop</Link>
         </li>
+        <li>
+          <Link to="/adminproduct">AddminProduct</Link>
+        </li>
       </ul>
 
       {/* hamberger menu */}

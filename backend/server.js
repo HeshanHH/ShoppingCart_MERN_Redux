@@ -14,6 +14,7 @@ app.use(express.json());
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
   swaggerDefinition: {
+    components: {}, // ADD THIS LINE!!!
     info: {
       version: '1.0.0',
       title: 'Shopping Cart API',

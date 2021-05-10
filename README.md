@@ -67,3 +67,7 @@
 # winston-mongodb
 
 - https://www.npmjs.com/package/winston
+
+# Swagger UI
+
+- https://github.com/Surnet/swagger-jsdoc/blob/v6/docs/FIRST-STEPS.md

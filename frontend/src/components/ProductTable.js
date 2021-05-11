@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductTable.css';
 
-const ProductTable = () => {
+const ProductTable = ({ tableHeadings, tabledata, isEdit, isDelete }) => {
   return (
     <div className="page">
       <div className="page__demo">
@@ -9,166 +9,80 @@ const ProductTable = () => {
           <table className="cus_table">
             <thead className="table__thead">
               <tr className="table__head">
-                <th className="table__th">Features</th>
+                {tableHeadings.map((tblhead, i) => (
+                  <th className="table__th" key={i}>
+                    {tblhead}
+                  </th>
+                ))}
+                {/* <th className="table__th">Features</th>
                 <th className="table__th">Silver Package</th>
                 <th className="table__th">Gold Package</th>
                 <th className="table__th">Platinum Package</th>
-                <th className="table__th">Actions</th>
+                <th className="table__th">Actions</th> */}
               </tr>
             </thead>
             <tbody className="table__tbody">
-              <tr className="table__tr">
-                <td className="table__td table__mobile-title">
-                  <span>Wedding day coverage</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Silver Package</span>
-                  <span className="table__value">6 hours</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Gold Package</span>
-                  <span className="table__value">8 hours</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">
-                    Platinum Package
-                  </span>
-                  <span className="table__value">10 hours</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Actions</span>
-                  <span className="table__value">
-                    <button className="btn btn-danger" style={{ margin: 5 }}>
-                      <i className="fas fa-trash"></i> DELETE
-                    </button>
-                  </span>
-                  <span className="table__value">
-                    <button className="btn btn-success" style={{ margin: 5 }}>
-                      <i className="fas fa-edit"></i> UPDATE
-                    </button>
-                  </span>
-                </td>
-              </tr>
-              <tr className="table__tr">
-                <td className="table__td table__mobile-title">
-                  <span>Post production</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Silver Package</span>
-                  <span className="table__value">2 weeks</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Gold Package</span>
-                  <span className="table__value">3 weeks</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">
-                    Platinum Package
-                  </span>
-                  <span className="table__value">4 weeks</span>
-                </td>
-              </tr>
-              <tr className="table__tr">
-                <td className="table__td table__mobile-title">
-                  <span>USB drive & copyrights of photographs</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Silver Package</span>
-                  <span className="table__value">600 photos</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Gold Package</span>
-                  <span className="table__value">700 photos</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">
-                    Platinum Package
-                  </span>
-                  <span className="table__value">800 photos</span>
-                </td>
-              </tr>
-              <tr className="table__tr">
-                <td className="table__td table__mobile-title">
-                  <span>
-                    Viewing session (in 4k) with your wedding music and
-                    complimentary bubbly
-                  </span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Silver Package</span>
-                  <span className="table__value">Yes</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Gold Package</span>
-                  <span className="table__value">Yes</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">
-                    Platinum Package
-                  </span>
-                  <span className="table__value">Yes</span>
-                </td>
-              </tr>
-              <tr className="table__tr">
-                <td className="table__td table__mobile-title">
-                  <span>
-                    12×12 Acrylic storybook wedding album (with matching acrylic
-                    case)
-                  </span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Silver Package</span>
-                  <span className="table__value">No</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Gold Package</span>
-                  <span className="table__value">Yes</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">
-                    Platinum Package
-                  </span>
-                  <span className="table__value">Yes</span>
-                </td>
-              </tr>
-              <tr className="table__tr">
-                <td className="table__td table__mobile-title">
-                  <span>8×8 Acrylic parent albums</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Silver Package</span>
-                  <span className="table__value">No</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Gold Package</span>
-                  <span className="table__value">No</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">
-                    Platinum Package
-                  </span>
-                  <span className="table__value">Yes</span>
-                </td>
-              </tr>
-              <tr className="table__tr">
-                <td className="table__td table__mobile-title">
-                  <span>Price</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Silver Package</span>
-                  <span className="table__value">799$</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">Gold Package</span>
-                  <span className="table__value">1250$</span>
-                </td>
-                <td className="table__td">
-                  <span className="table__mobile-caption">
-                    Platinum Package
-                  </span>
-                  <span className="table__value">1850$</span>
-                </td>
-              </tr>
+              {tabledata.map((tdata, i) => (
+                //  console.log(tdata);
+                // console.log(Object.keys(tdata))
+                <tr className="table__tr" key={tdata._id}>
+                  <td
+                    className="table__td table__mobile-title"
+                    style={{ width: '10% !important' }}
+                  >
+                    <span style={{ width: '10%' }}>
+                      {window.screen.width > 960 ? tdata._id : tdata.name}
+                    </span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[1]}
+                    </span>
+                    <span className="table__value">{tdata.name}</span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[2]}
+                    </span>
+                    <span className="table__value">
+                      {tdata.imageUrl.substring(0, 100)}...
+                    </span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[3]}
+                    </span>
+                    <span className="table__value">
+                      {tdata.description.substring(0, 100)}..
+                    </span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[4]}
+                    </span>
+                    <span className="table__value">{tdata.price}</span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[5]}
+                    </span>
+                    <span className="table__value">{tdata.countInStock}</span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">Actions</span>
+                    <span className="table__value">
+                      <button className="btn btn-danger" style={{ margin: 5 }}>
+                        <i className="fas fa-trash"></i> DELETE
+                      </button>
+                    </span>
+                    <span className="table__value">
+                      <button className="btn btn-success" style={{ margin: 5 }}>
+                        <i className="fas fa-edit"></i> UPDATE
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

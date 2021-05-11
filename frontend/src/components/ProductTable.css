@@ -29,7 +29,9 @@
     }
   
     .table__td:first-child, .table__th:first-child{
-      width: 30%;
+      /* width: 30%; */
+      /* min-width: 10%; */
+      width: 1%;
       text-align: left;
     }
   

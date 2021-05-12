@@ -1,4 +1,5 @@
 import React from 'react';
+import PopUpModal from './PopUpModal';
 import './ProductTable.css';
 
 const ProductTable = ({ tableHeadings, tabledata, isEdit, isDelete }) => {
@@ -74,6 +75,7 @@ const ProductTable = ({ tableHeadings, tabledata, isEdit, isDelete }) => {
                       <button className="btn btn-danger" style={{ margin: 5 }}>
                         <i className="fas fa-trash"></i> DELETE
                       </button>
+                      {/* <PopUpModal> DELETE</PopUpModal> */}
                     </span>
                     <span className="table__value">
                       <button className="btn btn-success" style={{ margin: 5 }}>

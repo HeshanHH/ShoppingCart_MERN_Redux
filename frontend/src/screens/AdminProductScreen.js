@@ -34,58 +34,90 @@ const AdminProductScreen = () => {
     'Action',
   ];
 
-  const fetchData = [
-    {
-      ID: 1,
-      name: 'abc',
-      ImageUrl: 'http://example.com/abc1',
-      Description: 'des des des1',
-      Price: 100.0,
-      InStockCount: 10,
-    },
-    {
-      ID: 2,
-      name: 'abc2',
-      ImageUrl: 'http://example.com/abc2',
-      Description: 'des des des2',
-      Price: 200.0,
-      InStockCount: 20,
-    },
-    {
-      ID: 3,
-      name: 'abc3',
-      ImageUrl: 'http://example.com/abc3',
-      Description: 'des des des3',
-      Price: 300.0,
-      InStockCount: 30,
-    },
-    {
-      ID: 4,
-      name: 'abc4',
-      ImageUrl: 'http://example.com/abc4',
-      Description: 'des des des4',
-      Price: 400.0,
-      InStockCount: 40,
-    },
-    {
-      ID: 5,
-      name: 'abc5',
-      ImageUrl: 'http://example.com/abc5',
-      Description: 'des des des5',
-      Price: 500.0,
-      InStockCount: 50,
-    },
-  ];
-
   return (
-    <div>
-      <h1>Addmin Product</h1>
-      <ProductTable
-        tableHeadings={heading}
-        tabledata={products}
-        isEdit="true"
-        isDelete="true"
-      ></ProductTable>
+    <div className="page">
+      <div className="page__demo">
+        <div className="main-container page__container">
+          <button className="btn btn-success" style={{ margin: 5 }}>
+            <i class="fas fa-plus"></i> Add New Product
+          </button>
+          <table className="cus_table">
+            <thead className="table__thead">
+              <tr className="table__head">
+                {heading.map((tblhead, i) => (
+                  <th className="table__th" key={i}>
+                    {tblhead}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="table__tbody">
+              {products.map((tdata, i) => (
+                //  console.log(tdata);
+                // console.log(Object.keys(tdata))
+                <tr className="table__tr" key={tdata._id}>
+                  <td
+                    className="table__td table__mobile-title"
+                    style={{ width: '10% !important' }}
+                  >
+                    <span style={{ width: '10%' }}>
+                      {window.screen.width > 960 ? tdata._id : tdata.name}
+                    </span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[1]}
+                    </span>
+                    <span className="table__value">{tdata.name}</span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[2]}
+                    </span>
+                    <span className="table__value">
+                      {tdata.imageUrl.substring(0, 100)}...
+                    </span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[3]}
+                    </span>
+                    <span className="table__value">
+                      {tdata.description.substring(0, 100)}..
+                    </span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[4]}
+                    </span>
+                    <span className="table__value">{tdata.price}</span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">
+                      {Object.keys(tdata)[5]}
+                    </span>
+                    <span className="table__value">{tdata.countInStock}</span>
+                  </td>
+                  <td className="table__td">
+                    <span className="table__mobile-caption">Actions</span>
+                    <span className="table__value">
+                      <button className="btn btn-danger" style={{ margin: 5 }}>
+                        <i className="fas fa-trash"></i> DELETE
+                      </button>
+                      {/* <PopUpModal> DELETE</PopUpModal> */}
+                    </span>
+                    <span className="table__value">
+                      <button className="btn btn-success" style={{ margin: 5 }}>
+                        <i className="fas fa-edit"></i> UPDATE
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

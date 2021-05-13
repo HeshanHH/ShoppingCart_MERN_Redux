@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -22,6 +23,18 @@ const UserSchema = new mongoose.Schema({
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
+});
+
+// mongoose provide middlewares that can use pre saving and post savings.
+UserSchema.pre('save', async function (next) {
+  // 'password' is the field we are passing here.
+  if (!this.isModified('password')) {
+    next(); // pass the next middleware as the paramete and we call that middleware here.
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt); // using created salt we can create hash password. this.password coms from the controller register function.
+  next();
 });
 
 const User = mongoose.model('User', UserSchema);

@@ -9,7 +9,7 @@ connectDB(); // call the mongodb fucntion exported from the modngo db config fil
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json()); // this convert request to json
 
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
@@ -44,3 +44,9 @@ app.use('/api/products', productRoutes);
 // command to start backe end server (if you are in main folder ) => node backend/server.js
 const PORT = process.env.PORT || 5000; // set the port
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`)); // log to console.
+
+// if there are any unhandledRejection, then this function will log it and close the serever.
+process.on('unhandledRejection', (err, promise) => {
+  console.log(`Logged Error: ${err.message}`);
+  server.close(() => process.exit(1));
+});

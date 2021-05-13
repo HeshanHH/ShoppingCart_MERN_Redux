@@ -7,6 +7,7 @@ const connectDB = async () => {
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true, // (node:14872) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead. **fixed.
     });
 
     console.log('MongoDB connection SUCCESS');

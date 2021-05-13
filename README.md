@@ -71,3 +71,7 @@
 # Swagger UI
 
 - https://github.com/Surnet/swagger-jsdoc/blob/v6/docs/FIRST-STEPS.md
+
+# Toast messages
+
+- https://fkhadra.github.io/react-toastify/introduction/

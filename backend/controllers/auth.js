@@ -29,7 +29,48 @@ exports.register = async (req, res, next) => {
 
 // @desc    Login user
 exports.login = async (req, res, next) => {
-  res.send('login route');
+  const { email, password } = req.body;
+
+  // Check if email and password is provided
+  if (!email || !password) {
+    res.status(400).json({
+      success: false,
+      error: 'Please provide an email and password',
+    });
+  }
+
+  try {
+    // Check that user exists by email
+    const user = await User.findOne({ email }).select('+password'); // getting user with password.
+
+    if (!user) {
+      res.status(401).json({
+        success: false,
+        error: 'Invalid credentials',
+      });
+    }
+
+    // Check that password match
+    // On the user we run matchPassword. that we difine on /Model/User
+    const isMatch = await user.matchPassword(password); // this return true || false
+
+    if (!isMatch) {
+      res.status(401).json({
+        success: false,
+        error: 'Invalid credentials',
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      token: 'tokenfrom',
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
 };
 
 // @desc    Forgot Password Initialization

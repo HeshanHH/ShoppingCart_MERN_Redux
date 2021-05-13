@@ -37,5 +37,13 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
+// mongoose match password method.
+// we can use this to matc password.
+// parameter : password (user provide one)
+UserSchema.methods.matchPassword = async function (password) {
+  // this.password is that password we got from database. using .select('+password');
+  return await bcrypt.compare(password, this.password);
+};
+
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

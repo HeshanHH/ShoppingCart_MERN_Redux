@@ -29,10 +29,15 @@ const swaggerOptions = {
   //apis: ['app.js'],
   apis: ['./backend/routes/*.js'],
 };
-const swaggerDocs = swaggerJsDoc(swaggerOptions); // pass our swager configurations.
+
+// pass our swager configurations.
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 //http://localhost:5000/api-docs/
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// if anything comes with "/api/auth" will re-direct to "./routes/auth" route.
+app.use('/api/auth', require('./routes/auth'));
 
 app.use('/api/products', productRoutes);
 

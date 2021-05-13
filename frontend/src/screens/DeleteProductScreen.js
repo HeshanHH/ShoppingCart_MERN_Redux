@@ -74,9 +74,9 @@ const DeleteProductScreen = ({ match }) => {
             draggable: true,
             progress: undefined,
           });
-          setInterval(() => {
-            history.push(`/adminproduct`);
-          }, 1000);
+          //   setInterval(() => {
+          //     history.push(`/adminproduct`);
+          //   }, 1000);
         }
       })
       .catch((err) => {

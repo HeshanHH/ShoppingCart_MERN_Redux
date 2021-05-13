@@ -31,10 +31,22 @@ const Navbar = ({ click }) => {
           </Link>
         </li>
         <li>
-          <Link to="/">Shop</Link>
+          <Link to="/" className="btn btn-light" style={{ color: 'black' }}>
+            Shop
+          </Link>
         </li>
         <li>
           <Link to="/adminproduct">AddminProduct</Link>
+        </li>
+        <li>
+          <Link to="/register" className="btn btn-success">
+            Sign Up
+          </Link>
+        </li>
+        <li>
+          <Link to="/login" className="btn btn-primary">
+            Sign In
+          </Link>
         </li>
       </ul>
 

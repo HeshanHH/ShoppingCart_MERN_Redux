@@ -1,17 +1,49 @@
+import './EditProductScreen.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
-const AddProductScreen = () => {
+const EditProductScreen = ({ match }) => {
   const url = '';
   const [product, setProduct] = useState({
+    _id: '',
     name: '',
     imageUrl: '',
     description: '',
     price: 0,
     countInStock: 0,
   });
+
+  console.log('match', match);
+
+  useEffect(() => {
+    async function fetchDate() {
+      const data = await axios.get(`/api/products/${match.params.id}`);
+      return await data;
+    }
+    fetchDate()
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          setProduct(res.data);
+          console.log(product);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error('Something went wrong while getting the product 📌', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  }, []);
 
   async function handle(e) {
     const newData = { ...product };
@@ -23,7 +55,7 @@ const AddProductScreen = () => {
   async function submit(e) {
     e.preventDefault();
     await axios
-      .post(`/api/products/`, {
+      .put(`/api/products/${product._id}`, {
         ...product,
       })
       .then((res) => {
@@ -87,8 +119,23 @@ const AddProductScreen = () => {
             className="form-label"
             style={{ color: 'white', textAlign: 'center' }}
           >
-            <b>Add New Product</b>
+            <b>Update Product</b>
           </h1>
+          <div className="mb-3">
+            <label htmlFor="id" className="form-label">
+              Product ID : <span style={{ color: 'red' }}>*</span>
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="id"
+              placeholder="ID"
+              required
+              onChange={(e) => handle(e)}
+              value={product._id}
+              disabled
+            />
+          </div>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name: <span style={{ color: 'red' }}>*</span>
@@ -165,13 +212,18 @@ const AddProductScreen = () => {
               />
             </div>
           </div>
-          <button type="submit" className="btn btn-primary btn-lg">
-            Add Product
-          </button>
+          <div className="d-grid gap-2 d-md-block">
+            <button type="submit" className="btn btn-primary btn-lg me-2">
+              Update Product
+            </button>
+            <Link to="/adminproduct" className="btn btn-secondary btn-lg">
+              Back To Product List
+            </Link>
+          </div>
         </form>
       </div>
     </>
   );
 };
 
-export default AddProductScreen;
+export default EditProductScreen;

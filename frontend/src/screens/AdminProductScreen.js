@@ -3,9 +3,17 @@ import { useState, useEffect } from 'react';
 import ProductTable from '../components/ProductTable';
 import './AdminProductScreen.css';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 const AdminProductScreen = () => {
   const [products, setProducts] = useState([]);
+
+  const history = useHistory();
+
+  const navigate = (id) => {
+    history.push(`/editproduct/${id}`);
+  };
+
   useEffect(() => {
     async function fetchDate() {
       const data = await axios.get('/api/products/');
@@ -39,7 +47,7 @@ const AdminProductScreen = () => {
       <div className="page__demo">
         <div className="main-container page__container">
           <button className="btn btn-success" style={{ margin: 5 }}>
-            <i class="fas fa-plus"></i> Add New Product
+            <i className="fas fa-plus"></i> Add New Product
           </button>
           <table className="cus_table">
             <thead className="table__thead">
@@ -107,7 +115,11 @@ const AdminProductScreen = () => {
                       {/* <PopUpModal> DELETE</PopUpModal> */}
                     </span>
                     <span className="table__value">
-                      <button className="btn btn-success" style={{ margin: 5 }}>
+                      <button
+                        className="btn btn-success"
+                        style={{ margin: 5 }}
+                        onClick={() => navigate(tdata._id)}
+                      >
                         <i className="fas fa-edit"></i> UPDATE
                       </button>
                     </span>

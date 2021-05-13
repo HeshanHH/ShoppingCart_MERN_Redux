@@ -75,3 +75,7 @@
 # Toast messages
 
 - https://fkhadra.github.io/react-toastify/introduction/
+
+# NodeMailer
+
+- https://www.npmjs.com/package/nodemailer

@@ -4,7 +4,7 @@ const productRoutes = require('./routes/productRoutes');
 const connectDB = require('./config/db');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-
+const errorHandler = require('./middlewares/error');
 connectDB(); // call the mongodb fucntion exported from the modngo db config file db.js
 
 const app = express();
@@ -40,6 +40,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/api/auth', require('./routes/auth'));
 
 app.use('/api/products', productRoutes);
+
+// Error Handler Middleware
+// this must place in last because the next() can collect all the errors.
+app.use(errorHandler);
 
 // command to start backe end server (if you are in main folder ) => node backend/server.js
 const PORT = process.env.PORT || 5000; // set the port

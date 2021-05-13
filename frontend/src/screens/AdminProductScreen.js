@@ -13,7 +13,9 @@ const AdminProductScreen = () => {
   const navigate = (id) => {
     history.push(`/editproduct/${id}`);
   };
-
+  const navigatetoDelete = (id) => {
+    history.push(`/deleteproduct/${id}`);
+  };
   useEffect(() => {
     async function fetchDate() {
       const data = await axios.get('/api/products/');
@@ -109,7 +111,11 @@ const AdminProductScreen = () => {
                   <td className="table__td">
                     <span className="table__mobile-caption">Actions</span>
                     <span className="table__value">
-                      <button className="btn btn-danger" style={{ margin: 5 }}>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => navigatetoDelete(tdata._id)}
+                        style={{ margin: 5 }}
+                      >
                         <i className="fas fa-trash"></i> DELETE
                       </button>
                       {/* <PopUpModal> DELETE</PopUpModal> */}

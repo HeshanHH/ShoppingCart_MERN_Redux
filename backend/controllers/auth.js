@@ -14,10 +14,11 @@ exports.register = async (req, res, next) => {
       password,
     });
 
-    res.status(201).json({
-      success: true,
-      user: user,
-    });
+    // res.status(201).json({
+    //   success: true,
+    //   user: user,
+    // });
+    sendToken(user, 200, res);
   } catch (err) {
     res.status(500).json({
       success: false,
@@ -67,10 +68,11 @@ exports.login = async (req, res, next) => {
       return next(new ErrorResponse('Invalid credentials', 401));
     }
 
-    res.status(200).json({
-      success: true,
-      token: 'tokenfrom',
-    });
+    // res.status(200).json({
+    //   success: true,
+    //   token: 'tokenfrom',
+    // });
+    sendToken(user, 200, res);
   } catch (err) {
     // res.status(500).json({
     //   success: false,
@@ -88,4 +90,10 @@ exports.forgotPassword = async (req, res, next) => {
 // @desc    Reset User Password
 exports.resetPassword = async (req, res, next) => {
   res.send('resetPassword route');
+};
+
+// create a separeate function to sendToken with response and status code.
+const sendToken = (user, statusCode, res) => {
+  const token = user.getSignedJwtToken();
+  res.status(statusCode).json({ sucess: true, token });
 };

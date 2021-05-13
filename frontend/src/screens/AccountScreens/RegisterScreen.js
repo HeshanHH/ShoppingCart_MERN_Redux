@@ -1,36 +1,36 @@
-import { useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import "./RegisterScreen.css";
+import { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import './RegisterScreen.css';
 
 const RegisterScreen = ({ history }) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmpassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
   const registerHandler = async (e) => {
     e.preventDefault();
 
     const config = {
       header: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     if (password !== confirmpassword) {
-      setPassword("");
-      setConfirmPassword("");
+      setPassword('');
+      setConfirmPassword('');
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 5000);
-      return setError("Passwords do not match");
+      return setError('Passwords do not match');
     }
 
     try {
       const { data } = await axios.post(
-        "/api/auth/register",
+        '/api/auth/register',
         {
           username,
           email,
@@ -39,13 +39,14 @@ const RegisterScreen = ({ history }) => {
         config
       );
 
-      localStorage.setItem("authToken", data.token);
+      // check for the authToken
+      localStorage.setItem('authToken', data.token);
 
-      history.push("/");
+      history.push('/');
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 5000);
     }
   };
